@@ -1,0 +1,28 @@
+<div>
+    Programs You are Jury for :
+</div>
+<div>
+    {% for program in programs %}
+    <p>
+        <a href="{% url 'program' program.id %}">
+            {{program}}
+        </a>
+    </p>
+    {% endfor %}
+</div>
+<hr>
+<div>
+    Ideas To be evaluated :
+</div>
+<div>
+    {% for idea in ideas %}
+    <p>
+        <a href="{% url 'idea' idea.id %}">
+            {{idea}}
+        </a>
+        <a href="{% url 'idea-accept' idea.id %}">Accept</a>
+        <a href="{% url 'idea-reject' idea.id %}">Reject</a>
+        <a href="{% url 'idea-put-on-hold' idea.id %}">Put On Hold</a>
+    </p>
+    {% endfor %}
+</div>

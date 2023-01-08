@@ -1,0 +1,20 @@
+{% extends 'main.html' %}
+{% block body %}
+
+<form enctype="multipart/form-data" method="POST">
+  {% csrf_token %}
+  {{user_form.as_p}}
+  {{profile_form.as_p}}
+  <input type="submit" value="Create" />
+
+  {% if user_form.error_messages or profile_form.error_messages %}
+  {% for message in user_form.error_messages %}
+  {{message}}
+  {% endfor %}
+  {% for message in profile_form.error_messages %}
+  {{message}}
+  {% endfor %}
+  {% endif %}
+</form>
+
+{% endblock body %}

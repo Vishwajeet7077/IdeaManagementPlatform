@@ -1,0 +1,43 @@
+{% extends 'main.html' %}
+{% block content %}
+<a href="{% url 'program-list' %}">All Programs</a>
+
+<h1>{{program.name}}</h1>
+
+<div>
+    {% if request.user.profile.is_admin %}
+    <a href="{% url 'program-update' program.id %}">Update</a>
+    <a href="{% url 'program-delete' program.id %}">Delete</a>
+    {% endif %}
+</div>
+<div>
+    <a href="{% url 'idea-create' program.id %}">Apply</a>
+</div>
+
+<div>
+
+    <div>
+        Start Date - {{program.start_time}}
+    </div>
+    <div>
+        End Date - {{program.end_time}}
+    </div>
+    <hr>
+    <div>
+        Application Start Date - {{program.application_start_time}}
+    </div>
+    <div>
+        Application End Date - {{program.application_end_time}}
+    </div>
+</div>
+
+<div>
+    <hr>
+    <h4>Ideas</h4>
+    {% for idea in ideas %}
+    <div>
+        {{idea}}
+    </div>
+    {% endfor %}    
+</div>
+{% endblock content %}

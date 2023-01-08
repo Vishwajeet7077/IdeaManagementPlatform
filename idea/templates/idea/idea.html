@@ -1,0 +1,30 @@
+{% extends 'main.html' %}
+{% block content %}
+{% load static %}
+<div>
+    <p>
+        <a href="{% url 'idea-list' %}">All Ideas</a>
+    </p>
+</div>
+
+<div>
+    <h1>{{idea.title}}</h1>
+</div>
+
+<div>
+    <p>
+        Status : {{idea.status}}
+    </p>
+</div>
+
+<div>
+    <p>
+        {{idea.description}}
+    </p>
+</div>
+{% if idea.image %}
+<div>
+    <img src="{{idea.image.url}}" alt="">
+</div>
+{% endif %}
+{% endblock content %}
