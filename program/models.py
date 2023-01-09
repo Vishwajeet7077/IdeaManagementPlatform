@@ -25,10 +25,11 @@ class Program(models.Model):
     application_end_time = models.DateTimeField(null=True)
 
     coordinator = models.ForeignKey(User, null=True, on_delete=models.SET_NULL)
-    business_unit = models.ForeignKey(
+    business_unit = models.OneToOneField(
         BusinessUnit, null=True, on_delete=models.SET_NULL)
     created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)
+    image = models.ImageField(default='default_program.png', upload_to='images/program_images')
 
     def __str__(self):
         return self.name
