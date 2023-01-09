@@ -105,3 +105,12 @@ h1,h2,h3{
 .i{padding: 2rem;}
 .socialmedia i{margin: 2rem;}
 
+/* ################### Personal Details ########## */
+.personalform .container{background: #ddd; margin-bottom: 5rem;}
+.personalform h2{text-align: center;margin-top: 5rem;}
+.signupform label{display: block;}
+.signupform input{display: block;width: 100% ;padding: 0.5rem;}
+.signupform{max-width: 800px;width: 90%; margin: auto;text-align: left;}
+.formgroup{margin-top: 1rem;}
+.signupform textarea{width: 100%;}
+
