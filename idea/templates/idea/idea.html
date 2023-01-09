@@ -13,9 +13,17 @@
 
 <div>
     <p>
-        Status : {{idea.status}}
+        Status : {{idea_status}}
     </p>
 </div>
+<div>
+    {{jury}}
+{% if jury == request.user %}
+<a href="{% url 'idea-change-status' idea.id %}">Change Status</a>
+{% else %}
+{% endif %}
+</div>
+<hr>
 
 <div>
     <p>
@@ -26,5 +34,8 @@
 <div>
     <img src="{{idea.image.url}}" alt="">
 </div>
+{% endif %}
+{% if idea.ideator == request.user %}
+<a href="{% url 'idea-update' idea.id %}">Update</a>
 {% endif %}
 {% endblock content %}

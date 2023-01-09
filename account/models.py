@@ -1,6 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
-from program.models import Program
+from program.models import Program, BusinessUnit
 # Create your models here.
 
 
@@ -19,6 +19,7 @@ class Profile(models.Model):
     years_of_experience = models.DurationField(null=True, blank=True)
 
     jury_programs = models.ManyToManyField(Program, blank=True)
+    jury_business_unit = models.ForeignKey(BusinessUnit, null=True, blank=True, on_delete=models.SET_NULL)
 
     def __str__(self):
         return self.user.username

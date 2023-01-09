@@ -2,6 +2,8 @@ from django.shortcuts import render, redirect
 from .models import Idea
 from .forms import IdeaForm
 from program.models import Program
+from django.contrib.auth.decorators import login_required
+from django.core.mail import send_mail
 # Create your views here.
 
 
@@ -9,14 +11,20 @@ def dummyView(request, pk=0, pk2=0):
     return render(request, 'dummy.html')
 
 
+@login_required(login_url='login')
 def ideaView(request, pk):
     idea = Idea.objects.get(id=pk)
+    jury = idea.business_unit.jury
+    print(idea.business_unit, idea.business_unit.jury)
     context = {
         'idea': idea,
+        'idea_status': idea.getStatus(),
+        'jury': jury,
     }
     return render(request, 'idea/idea.html', context)
 
 
+@login_required(login_url='login')
 def ideaCreate(request, pk):
     program = Program.objects.get(id=pk)
     form = IdeaForm()
@@ -28,15 +36,43 @@ def ideaCreate(request, pk):
         idea.ideator = request.user
         if form.is_valid():
             idea.save()
+            subject = f"Idea applied for project {program.name}"
+            message = idea.description
+            send_mail(
+                subject,
+                message,
+                'wcedummy7798@gmail.com',
+                [program.coordinator.email, 'wcedummy7798@gmail.com'],
+                fail_silently=False
+            )
             return redirect('idea', idea.id)
     context = {
         'form': form,
     }
     return render(request, 'idea/idea_form.html', context)
 
+
+@login_required(login_url='login')
 def ideaList(request):
     ideas = Idea.objects.all()
     context = {
-        'ideas' : ideas,
+        'ideas': ideas,
     }
     return render(request, 'idea/idea_list.html', context)
+
+
+@login_required(login_url='login')
+def ideaUpdate(request, pk):
+    idea = Idea.objects.get(id=pk)
+    if idea.ideator != request.user:
+        return redirect('access-denied')
+    if request.method == 'GET':
+        form = IdeaForm(instance=idea)
+        context = {
+            'form': form,
+        }
+        return render(request, 'idea/idea_form.html', context)
+    else:
+        form = IdeaForm(request.POST, request.FILES, instance=idea)
+        form.save()
+        return redirect('idea', idea.id)

@@ -1,5 +1,5 @@
 {% extends 'main.html' %}
-{% block body %}
+{% block content %}
 
 <form enctype="multipart/form-data" method="POST">
   {% csrf_token %}
@@ -17,4 +17,4 @@
   {% endif %}
 </form>
 
-{% endblock body %}
+{% endblock content %}

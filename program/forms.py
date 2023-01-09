@@ -5,7 +5,7 @@ class ProgramForm(ModelForm):
     class Meta:
         model = Program
         fields = '__all__'
-        exclude = []
+        exclude = ['coordinator']
 
 class BusinessUnitForm(ModelForm):
     class Meta:

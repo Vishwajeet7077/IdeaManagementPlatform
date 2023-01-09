@@ -1,7 +1,7 @@
 {% extends 'main.html' %}
-{% block body %}
+{% block content %}
 
-<form method="POST">
+<form enctype="multipart/form-data" method="POST">
   {% csrf_token %}
   {{user_form.as_p}}
   {{profile_form.as_p}}
@@ -17,4 +17,4 @@
   {% endif %}
 </form>
 
-{% endblock body %}
+{% endblock content %}

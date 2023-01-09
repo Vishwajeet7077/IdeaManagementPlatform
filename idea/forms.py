@@ -7,7 +7,7 @@ class IdeaForm(ModelForm):
         model = Idea
         fields = '__all__'
         exclude = ['ideator', 'status', 'program', 'business_unit',
-                   'is_accepted', 'is_rejected', 'is_on_hold', 'is_pending']
+                   'is_accepted', 'is_rejected', 'is_on_hold', 'is_pending', 'projected_revenue', 'actual_revenue']
 
 
 class BusinessUnitForm(ModelForm):
