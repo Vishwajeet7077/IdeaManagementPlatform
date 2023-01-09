@@ -17,8 +17,6 @@ def loginUser(request):
     if request.method == 'POST':
         username = request.POST.get('username')
         password = request.POST.get('password')
-        print(username)
-        print(password)
         user = authenticate(request, username=username, password=password)
         print(user)
         if user is not None:
@@ -31,28 +29,21 @@ def loginUser(request):
 
 def registerUser(request):
     if request.method == 'GET':
-        user_form = UserCreationForm()
-        profile_form = ProfileForm()
-        context = {
-            'user_form': user_form,
-            'profile_form': profile_form,
-        }
-        return render(request, 'account/register.html', context)
+        return render(request, 'account/register.html')
     else:
         user_form = UserCreationForm(request.POST)
-        profile_form = ProfileForm(request.POST)
-        if user_form.is_valid() and profile_form.is_valid():
+        print(user_form)
+        if user_form.is_valid():
             user = user_form.save(commit=False)
-            profile = profile_form.save(commit=False)
-            profile.user = user
+            user.email = request.POST.get('email')
+            profile = Profile(user=user)
             user.save()
             profile.save()
             login(request, user)
-            return redirect('home')
+            return redirect('profile-update')
         else:
             context = {
                 'user_form': user_form,
-                'profile_form': profile_form,
             }
             return render(request, 'account/register.html', context)
 
