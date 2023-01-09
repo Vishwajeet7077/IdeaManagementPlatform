@@ -33,6 +33,7 @@ class Idea(models.Model):
     actual_net_revenue = models.BigIntegerField(null=True, blank=True)
     created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)
+    score = models.IntegerField(default=0)
 
     def __str__(self):
         return self.title
