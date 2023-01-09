@@ -1,16 +1,12 @@
-<div class="navbar">
-    <div class="left" style="align-content: flex-end;">
-        <a href="{% url 'idea-list' %}">View All Ideas</a>
-        <a href="{% url 'program-list' %}">View All Programs</a>
-        <a href="{% url 'program-create' %}">Add Program</a>
-    </div>
-    <div>
-        <a href="{% url 'user-profile' %}">Profile</a>
-        <a href="{% url 'logout' %}">Logout</a>
-    </div>
-    <hr>
-    {% if request.user.profile.is_jury %}
-    <a href="{% url 'jury-idea-list' %}">See Ideas to Be judged</a>
-    <hr>
-    {% endif %}
-</div>
+
+    <nav class="navbar  bgdark ">
+        <div class="container">
+            <h1 class="logo lgheading textlight">Idea Manangment </h1>
+            <ul class="navitems textlight">
+                <li class="navitem "><a href="">IDEATOR</a></li>
+                <li class="navitem "><a href="">INOVATION_CHAMPION</a></li>
+                <li class="navitem "><a href="">ADMIN</a></li>
+            </ul>
+            <div class="clearfix"></div>
+        </div>
+    </nav>

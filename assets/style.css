@@ -76,10 +76,11 @@ h1,h2,h3{
 
 /* #################### BU programs ################## */
 .buunit{padding: 10rem 0;background: #ddd;}
+.buunit .boxwrap{height: 400px;}
 .boxwrap{box-shadow: 5px 5px 20px 0px #aaa;}
 .bu{width: 33.333% ; float: left;padding: 2rem; text-align: center;}
-.bu1, .bu3{background-color: #263238;color: white;}
-.bu2{background: linear-gradient(25deg, #d64c7f, #ee4758 50%); color: white;}
+.bu1, .bu3{background-color: #263238;color: white; height: 100%;margin-bottom: 3rem;}
+.bu2{background: linear-gradient(25deg, #d64c7f, #ee4758 50%); color: white;height: 100%; margin-bottom: 3rem;}
 .buunit h1{font-size: 3rem;text-align: center;margin-bottom: 2rem;}
 .buunit h2{font-size: 3.5rem;}
 .checkchamp{font-size: 2rem;margin-top: 3rem;}
@@ -104,15 +105,4 @@ h1,h2,h3{
 .footer{background-color: #263238; color: white; padding: 2rem;text-align: center;}
 .i{padding: 2rem;}
 .socialmedia i{margin: 2rem;}
-
-/* ################### Personal Details ########## */
-.personalform .container{background: #ddd; margin-bottom: 5rem;}
-.personalform h2{text-align: center;margin-top: 5rem;}
-.signupform label{display: block;}
-.signupform input{display: block;width: 100% ;padding: 0.5rem;}
-.signupform{max-width: 800px;width: 90%; margin: auto;text-align: left;}
-.formgroup{margin-top: 1rem;}
-.signupform textarea{width: 100%;}
-.ideaform .container{background: #ddd; margin-bottom: 5rem;}
-.ideaform h2{text-align: center;margin-top: 5rem;}
 
